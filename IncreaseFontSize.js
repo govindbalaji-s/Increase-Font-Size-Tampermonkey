@@ -7,8 +7,12 @@
 // @match        *://*/**
 // @grant        none
 // ==/UserScript==
-
+netFontSizeChange = 0;
 cFS = function(x){
+    if(x == 0){ // x = 0 resets the font size to defaults.
+        cFS(-netFontSizeChange);
+    }
+    netFontSizeChange += x;
     $("*").each(function(){
         var $this = $(this);
         $this.css( "font-size" , parseInt($this.css("font-size"))+x );
